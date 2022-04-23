@@ -1,8 +1,7 @@
-import os, time, logging
+import os, re, time, logging
 # undetected chromedriver cuz I got my account locked
 import undetected_chromedriver as uc
 # selenium imports
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -42,14 +41,16 @@ class LinkedinScraper():
         # find & click the sign-in button
         self.driver.find_element(By.CLASS_NAME, "sign-in-form__submit-button").click()
     
-    def extract_company_employees(self, *, company_url: str='https://www.linkedin.com/company/hubspot/', get_all_public:bool=False, total_employees:int=100) -> None:
+    def extract_company_employees(self, *, company_url: str='https://www.linkedin.com/company/hubspot/', get_all_public:bool=False, total_employees:int=20) -> None:
         # go to the company page (the people section specifically)
-        self.driver.get(company_url + 'people/')
+        if not re.match(r'people/?$', company_url): 
+            company_url += 'people/'
+        self.driver.get(company_url)
         # wait for page to load
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'scaffold-finite-scroll')))
         '''
-        Gets & stores all visible/public employees. Whenever it runs out of visible employees, it will scroll down
-        to load more. Continues until it collects info on 100 employees.
+        Gets & stores all visible & public employees. Whenever it runs out of visible employees, 
+        it will scroll down to load more. Continues until it collects info on the given number of employees.
         ---
         @param get_all_public: True if you want to get all public employees, even those w/o a profile pic
         '''
@@ -60,16 +61,15 @@ class LinkedinScraper():
         while len(self.employees) < total_employees:
             employee = people_list[counter]
             # add the employee to the list
-            self._get_employee_info(employee, force=get_all_public)
-            # close the tab to back to the original tab
+            try:
+                self._get_employee_info(employee, force=get_all_public)
+            except Exception as e:
+                logging.error(f'Could not get info for employee number {len(self.employees)+1}')
+                logging.error(e)
+            # close extra tabs
             if len(self.driver.window_handles) > 1:
-                while self.driver.window_handles > 1:
-                    # keep going to the last tab and closing it
-                    self.driver.switch_to.window(self.driver.window_handles[-1])
-                    self.driver.close()
-            # switch to original window so selenium can continue
-            self.driver.switch_to.window(self.driver.window_handles[0])
-            # update counter to start further in the list
+                self._close_all_tabs()
+            # update counter to start at the next spot in the list
             counter += 1
             if counter == len(people_list):
                 # Scroll to bottom of page to load more employees
@@ -131,6 +131,7 @@ class LinkedinScraper():
         # get employees profile pic
         profile_pic = self.driver.find_elements(By.CLASS_NAME, 'pv-top-card-profile-picture__image')
         if not profile_pic:
+            logging.error(f'Could not find profile pic for {employee.name}')
             return
         profile_pic = profile_pic[0].get_attribute('src')
         # add info to employees list
@@ -138,3 +139,11 @@ class LinkedinScraper():
         # give it a second to process
         time.sleep(0.1)
         logging.info(f'{len(self.employees)} employees collected')
+    
+    def _close_all_tabs(self):
+        while len(self.driver.window_handles) > 1:
+            # keep going to the last tab and closing it
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+            self.driver.close()
+        # switch to original window so selenium can continue
+        self.driver.switch_to.window(self.driver.window_handles[0])
