@@ -8,7 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 # personal imports
-from data_storage import LinkedinEmployees
+from data_storage import Employees
 
 # Logging settings to allow info logs through the console
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -19,7 +19,7 @@ class LinkedinScraper():
 
     def __init__(self):
         # place to store employees
-        self.employees = LinkedinEmployees()
+        self.employees = Employees()
         # opens the browser
         # self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         self.driver = uc.Chrome()
