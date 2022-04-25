@@ -13,6 +13,8 @@ from selenium.common.exceptions import TimeoutException
 from .data_storage import Employees
 # funcs imports
 from .helper_funcs import check_for_captcha, check_for_compliance, login_through_form, create_driver
+# cli imports
+from tqdm import tqdm
 
 # concurrent function that runs extract_employee information on multiple threads
 def get_all_employee_data(employees: list[str]) -> Employees:
@@ -24,15 +26,17 @@ def get_all_employee_data(employees: list[str]) -> Employees:
     drivers = [create_driver(headless=False)] + [create_driver(headless=True) for _ in range(num_threads-1)]
     # login to each driver with a different login
     [login_through_form(driver, from_homepage=True, email=email, password=password) for email, password, driver in zip(emails, passwords, drivers)]
+    # object to update the loading bar for the cli
+    loader = tqdm(total=sum([len(x) for x in employees]), desc='Crawling Profiles')
     # create a thread pool
     with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
         # lambda takes in a driver, employees, & storage -- calls extract_employee_info for each employee in list
-            # (d,l,s) == (driver, profile_link, employee_storage)
-        executor.map(lambda d,e,s: [extract_employee_info(d,l,s) for l in e], drivers, employees, [employee_storage]*num_threads)
+            # (d,i,s,l) == (driver, profile_link, employee_storage, loader)
+        executor.map(lambda d,e,s,l: [extract_employee_info(d,p,s,l) for p in e], drivers, employees, [employee_storage]*num_threads, [loader]*num_threads)
     return employee_storage
 
 # get the info for a single profile
-def extract_employee_info(driver: uc.Chrome, profile_link:str, employees: Employees) -> None:
+def extract_employee_info(driver: uc.Chrome, profile_link:str, employees: Employees, loader: tqdm) -> None:
     driver.get(profile_link)
     # wait for the profile to load
     check_for_captcha(driver)
@@ -77,6 +81,8 @@ def extract_employee_info(driver: uc.Chrome, profile_link:str, employees: Employ
     # store all this info in the employees object
     employees.add_employee(first_name, last_name, label=label, location=location, profile_pic=profile_pic)
     logging.info(f'{first_name} {last_name} added to employees: {employees[0].label}')
+    # update the loading bar
+    loader.update(1)
 
 def get_employees_from_file(file:str, /, *, output:str) -> None:
     '''

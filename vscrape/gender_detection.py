@@ -1,34 +1,30 @@
-import os, time, sys, csv
-import concurrent.futures
-import pandas as pd
-import numpy as np
+import os, time, sys, logging
+from tqdm import tqdm
 
-def detect_gender(file: str, DeepFace) -> str:
+def detect_gender(file: str,) -> str:
     '''
     Detect gender of person in image using deepface
     '''
-    res = DeepFace.analyze(file, actions = ['gender'], detector_backend='retinaface')
+    from deepface import DeepFace
+    res = DeepFace.analyze(file, actions = ['gender'], detector_backend='retinaface', enforce_detection=False)
     # path/to/file.jpg -> file.jpg
     filename = os.path.split(file)[1]
     # name_position.jpg -> name_position -> position
     return res['gender'], filename.split('.')[0].split('_')[1]
 
 def detect_genders_from_dir(dir: str) -> dict[str]:
+    '''
+    Detect gender for every image in a directory
+    '''
     if not os.path.isdir(dir):
         print(f'Confirm that {dir} exists')
         sys.exit(1)
-    print(f'{"="*5}Running Image Detection for Face Analaysis...{"="*5}')
-    # images = [f'{dir}/{f}' for f in os.listdir(dir)]
-    # with concurrent.futures.ThreadPoolExecutor() as executor:
-    #     results = executor.map(detect_gender, images)
-    #     for gender, position in results:
-    #         genders[position] = gender
     genders = dict()
     from deepface import DeepFace # internal import to avoid lag
-    for path in os.listdir(dir):
+    for path in tqdm(os.listdir(dir), desc='Analyzing Genders'):
         gender, position = detect_gender(f'{dir}/{path}', DeepFace)
         genders[int(position)] = gender
-    print(f'{"="*10}ASSIGNED {len(genders)} GENDERS{"="*10}')
+    logging.INFO(f'{"="*10}ASSIGNED {len(genders)} GENDERS{"="*10}') # lmao
     return genders
 
 

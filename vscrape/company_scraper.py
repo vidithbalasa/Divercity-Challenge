@@ -8,6 +8,8 @@ import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+# CLI imports
+from tqdm import tqdm
 
 # Get a list of public profiles on the company page
 def extract_company_employees(driver: uc.Chrome, *, url:str=company_url, total_employees:int=num_employee, return_profiles:bool=False) -> Optional[list[str]]:
@@ -35,6 +37,7 @@ def extract_company_employees(driver: uc.Chrome, *, url:str=company_url, total_e
     count = 0
     # check that it didn't top out more than twice in a row
     stalled = 0
+    loader = tqdm(total=total_employees, desc='Crawling Profile Page')
     while len(public_profiles) < total_employees:
         for employee in profiles[count:]:
             # we know theyre private if they don't have a name
@@ -48,6 +51,8 @@ def extract_company_employees(driver: uc.Chrome, *, url:str=company_url, total_e
                 continue
             public_profiles.append(profile_link)
             logging.info(f'{len(public_profiles):03} profiles collected')
+            # update loading bar
+            loader.update(1)
         # increase the count 
         count = len(profiles)
         # scroll up a little bit before scrolling to the bottom (makes sure it triggers the load more function)
@@ -73,6 +78,6 @@ def extract_company_employees(driver: uc.Chrome, *, url:str=company_url, total_e
     # with open('profiles.txt', 'w') as f:
     #     for profile in public_profiles[:total_employees]:
     #         f.write(f'{profile}\n')
-    print(f"{'='*10}{len(public_profiles)} profiles stored{'='*10}")
+    # print(f"{'='*10}{len(public_profiles)} profiles stored{'='*10}")
     if return_profiles:
-        return public_profiles
+        return public_profiles[:total_employees]

@@ -19,6 +19,12 @@ class Employees(list):
             for employee in self:
                 f.write(f'{employee.first_name.strip()},{employee.last_name.strip()},{employee.location.strip()},{employee.label.strip()},{employee.profile_pic.strip()}\n')
     
+    # # change the append function so that it updates the loading bar each time
+    # def append(self, employee: LinkedinProfile) -> None:
+    #     super().append(employee)
+    #     # loading bar
+    #     print(f'\r{self.__len__()}/{len(self)}', end='\r')
+    
     def __repr__(self) -> str:
         s = ''
         for employee in self[:5]:

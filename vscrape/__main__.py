@@ -16,12 +16,9 @@ def run_full_bot() -> None:
     # login
     login_through_form(driver, from_homepage=True)
     # get the list of public profiles
-    print('getting list of employees...')
-    # call the function to get the list of public profiles
     profiles = extract_company_employees(driver, total_employees=args.tot_employee, return_profiles=True)
     driver.quit()
     # get the employee data from the profile links
-    print('getting info on each employee...')
     employees = get_all_employee_data(profiles)
     employees.save_as_csv(args.output)
 
@@ -51,7 +48,6 @@ def main():
         case 'employee':
             # get the info for each profile
             if args.file:
-                print('getting info on each employee...')
                 get_employees_from_file(args.file, output=args.output)
                 # download their profile pics
                 if not args.no_downloads:
@@ -61,7 +57,6 @@ def main():
                         write_genders_to_csv(args.output, genders)
             elif args.profile_link:
                 driver = create_driver(headless=True)
-                print('logging in...')
                 login_through_form(driver, from_homepage=True)
                 employees = Employees()
                 extract_employee_info(driver, args.profile_link, employees)
@@ -74,6 +69,7 @@ def main():
             else:
                 print('Please specify either a file or a profile link.')
                 sys.exit(1)
+    print(f'Thanks for using Vscrape.\n{"="*40}\n\ntotal employees :: {args.tot_employee}\noutput file :: {args.output}{f"\npictures dir :: {args.pictures_dir}" if args.pictures_dir else ""}\n{"="*40}')
 
 if __name__ == '__main__':
     main()
