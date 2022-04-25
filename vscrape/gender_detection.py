@@ -1,11 +1,10 @@
 import os, time, sys, logging
 from tqdm import tqdm
 
-def detect_gender(file: str,) -> str:
+def detect_gender(file: str, DeepFace) -> str:
     '''
     Detect gender of person in image using deepface
     '''
-    from deepface import DeepFace
     res = DeepFace.analyze(file, actions = ['gender'], detector_backend='retinaface', enforce_detection=False)
     # path/to/file.jpg -> file.jpg
     filename = os.path.split(file)[1]
@@ -24,7 +23,7 @@ def detect_genders_from_dir(dir: str) -> dict[str]:
     for path in tqdm(os.listdir(dir), desc='Analyzing Genders'):
         gender, position = detect_gender(f'{dir}/{path}', DeepFace)
         genders[int(position)] = gender
-    logging.INFO(f'{"="*10}ASSIGNED {len(genders)} GENDERS{"="*10}') # lmao
+    logging.info(f'{"="*10}ASSIGNED {len(genders)} GENDERS{"="*10}') # lmao
     return genders
 
 

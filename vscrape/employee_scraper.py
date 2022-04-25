@@ -22,10 +22,13 @@ def get_all_employee_data(employees: list[str]) -> Employees:
     employees = [employees[i::num_threads] for i in range(num_threads)]
     # create global employees object for all threads to access
     employee_storage = Employees()
-    # create a driver for each thread (w one non-headless driver)
-    drivers = [create_driver(headless=False)] + [create_driver(headless=True) for _ in range(num_threads-1)]
-    # login to each driver with a different login
-    [login_through_form(driver, from_homepage=True, email=email, password=password) for email, password, driver in zip(emails, passwords, drivers)]
+    drivers = list()
+    # create drivers for each thread & login (tqdm looks ugly here but makes things so easy)
+    for i, (email, password) in tqdm(enumerate(zip(emails, passwords)), desc="Creating Threaded Browsers"):
+        logging.info(f'Logging in as {email}...')
+        driver = create_driver(headless=i) # all healdless except the first (gross that this code works tbh)
+        login_through_form(driver, email=email, password=password, from_homepage=True)
+        drivers.append(driver)
     # object to update the loading bar for the cli
     loader = tqdm(total=sum([len(x) for x in employees]), desc='Crawling Profiles')
     # create a thread pool

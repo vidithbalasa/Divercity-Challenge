@@ -1,6 +1,6 @@
-import sys, argparse, logging, os
+import sys, argparse, logging, os, csv
 # import funcs
-from .employee_scraper import get_all_employee_data, get_employees_from_file, extract_employee_info
+from .employee_scraper import get_all_employee_data, get_employees_from_file
 from .download_profile_pics import download_profile_pics
 from .company_scraper import extract_company_employees
 from .helper_funcs import create_driver, login_through_form, write_genders_to_csv
@@ -33,9 +33,10 @@ def run_full_bot() -> None:
 def main():
     # basic logging settings
     logging.basicConfig(level=logging.INFO if args.debug else logging.CRITICAL, format='%(asctime)s - %(levelname)s - %(message)s')
+    print(f'{"="*20} STARTING VSCRAPE {"="*20}')
 
     # if no downloads is turned off & pictures dir exists & it's not empty then tell the user to empty it
-    if ( not args.no_downloads ) and os.path.isdir(args.pictures_dir) and ( not os.path.listdir(args.pictures_dir) ):
+    if ( not args.no_downloads ) and os.path.isdir(args.pictures_dir) and ( not os.listdir(args.pictures_dir) ):
         print('Please ensure the specified "--pictures-dir" directory is empty.')
         sys.exit(1)
 
@@ -58,18 +59,33 @@ def main():
             elif args.profile_link:
                 driver = create_driver(headless=True)
                 login_through_form(driver, from_homepage=True)
-                employees = Employees()
-                extract_employee_info(driver, args.profile_link, employees)
+                employees = get_all_employee_data([args.profile_link])
+                output = f'\n\n{employees[0].first_name} {employees[0].last_name} ({employees[0].location}) :: {employees[0].label}'
                 if not args.no_downloads:
                     download_profile_pics(args.output, args.pictures_dir)
                     if args.face_detection:
                         genders = detect_genders_from_dir(args.pictures_dir)
-                print(employees)
-                if genders: print(f'Gender: {genders[1]}')
+                        output += f'gender :: {genders.get(1, "unkown")}'
+                    output += f'\nphoto storage :: {args.pictures_dir}/'
+                print(output + '\n\n')
+                return
             else:
                 print('Please specify either a file or a profile link.')
                 sys.exit(1)
-    print(f'Thanks for using Vscrape.\n{"="*40}\n\ntotal employees :: {args.tot_employee}\noutput file :: {args.output}{f"\npictures dir :: {args.pictures_dir}" if args.pictures_dir else ""}\n{"="*40}')
+    goodbye = f'Thanks for using Vscrape.\n{"="*40}\n\ntotal employees :: {len(open(args.output).readlines())-1}\noutput file :: {args.output}'
+    if not args.no_downloads:
+        goodbye += f'\npictures dir :: {args.pictures_dir}'
+        if args.face_detection:
+            with open(args.output, 'r') as f:
+                reader = csv.reader(f)
+                next(reader) # skip first line
+                m, f, unkown = 0, 0, 0
+                for employee in reader:
+                    if employee[-1] == 'Man': m += 1
+                    elif employee[-1] == 'Woman': f += 1
+                    else: unkown += 1
+            goodbye += f'\nface detection :: {m} men | {f} women | {unkown} unkown'
+    print(f'{goodbye}\n\n{"="*40}')
 
 if __name__ == '__main__':
     main()

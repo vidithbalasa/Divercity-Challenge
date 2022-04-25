@@ -37,7 +37,7 @@ def extract_company_employees(driver: uc.Chrome, *, url:str=company_url, total_e
     count = 0
     # check that it didn't top out more than twice in a row
     stalled = 0
-    loader = tqdm(total=total_employees, desc='Crawling Profile Page')
+    loader = tqdm(total=total_employees, desc='Scraping Profiles')
     while len(public_profiles) < total_employees:
         for employee in profiles[count:]:
             # we know theyre private if they don't have a name

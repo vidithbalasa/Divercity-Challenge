@@ -63,7 +63,7 @@ def write_genders_to_csv(csv_file: str, genders: dict[str]) -> None:
     df['gender'] = np.nan
     # add the genders to the dataframe
     for key, gender in genders.items():
-        df.loc[key+1, 'gender'] = gender
+        df.loc[key, 'gender'] = gender
     # write the dataframe to the csv
     df.to_csv(csv_file, index=False)
     return
