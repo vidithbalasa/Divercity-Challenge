@@ -1,10 +1,19 @@
 from setuptools import setup
 setup(
-    name = 'vscrape',
-    version = '0.1.0',
-    packages = ['vscrape'],
+    name = 'leegs',
+    version = '1.1.0',
+    packages = ['leegs'],
     entry_points = {
         'console_scripts': [
-            'vscrape = vscrape.__main__:main'
+            'leegs = leegs.__main__:main'
         ]
-    })
+    },
+    install_requires = [
+        'selenium',
+        'undetected-chromedriver',
+        'requests',
+        'pandas',
+        'numpy',
+        'tqdm',
+    ]
+)
