@@ -1,7 +1,7 @@
-import re, logging
+import re, logging, sys
 import concurrent.futures
 # default values
-from settings import email, password, email2, password2, num_threads
+from .settings import emails, passwords, num_threads
 # undetected chromedriver so my account stops getting locked
 import undetected_chromedriver as uc
 # selenium imports
@@ -10,9 +10,26 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 # data storage
-from data_storage import Employees
+from .data_storage import Employees
 # funcs imports
-from helper_funcs import check_for_captcha, check_for_compliance, login_through_form, create_driver
+from .helper_funcs import check_for_captcha, check_for_compliance, login_through_form, create_driver
+
+# concurrent function that runs extract_employee information on multiple threads
+def get_all_employee_data(employees: list[str]) -> Employees:
+    # split up employees into `num_threads` lists to evenly distribute workload across threads
+    employees = [employees[i::num_threads] for i in range(num_threads)]
+    # create global employees object for all threads to access
+    employee_storage = Employees()
+    # create a driver for each thread (w one non-headless driver)
+    drivers = [create_driver(headless=False)] + [create_driver(headless=True) for _ in range(num_threads-1)]
+    # login to each driver with a different login
+    [login_through_form(driver, from_homepage=True, email=email, password=password) for email, password, driver in zip(emails, passwords, drivers)]
+    # create a thread pool
+    with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+        # lambda takes in a driver, employees, & storage -- calls extract_employee_info for each employee in list
+            # (d,l,s) == (driver, profile_link, employee_storage)
+        executor.map(lambda d,e,s: [extract_employee_info(d,l,s) for l in e], drivers, employees, [employee_storage]*num_threads)
+    return employee_storage
 
 # get the info for a single profile
 def extract_employee_info(driver: uc.Chrome, profile_link:str, employees: Employees) -> None:
@@ -24,6 +41,7 @@ def extract_employee_info(driver: uc.Chrome, profile_link:str, employees: Employ
     if driver.find_elements(By.CLASS_NAME, 'join-form'):
         driver.find_element(By.CLASS_NAME, 'authwall-join-form__form-toggle--bottom').click()
         login_through_form(driver)
+        driver.get(profile_link)
     # wait for the profile to load
     try:
         box = WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME, 'ph5')))
@@ -46,37 +64,23 @@ def extract_employee_info(driver: uc.Chrome, profile_link:str, employees: Employ
         profile_pic = ''
     else:
         profile_pic = box.find_element(By.CLASS_NAME, 'pv-top-card-profile-picture__image').get_attribute('src')
+    # if profile_pic:
+    #     download_profile_pic(profile_pic, f'{hash(first_name)}.jpg')
     # store all this info in the employees object
     employees.add_employee(first_name, last_name, label=label, location=location, profile_pic=profile_pic)
     logging.info(f'{first_name} {last_name} added to employees: {employees[0].label}')
 
-# a function that takes in a driver and a list of employees, it is a worker in charge of
-# getting all the information for the given employees
-def get_multiple_employee_data(driver: uc.Chrome, employees: list[str], employee_storage: Employees) -> None:
-    # login_through_form(driver)
-    for profile_link in employees:
-        extract_employee_info(driver, profile_link, employee_storage)    
-
-# concurrent function that runs extract_employee information on multiple threads
-def get_all_employee_data(employees: list[str], total_employees:int=20) -> Employees:
-    # split up employees into a num_threads lists for each thread
-    employees = employees[:total_employees]
-    employees = [employees[i::num_threads] for i in range(num_threads)]
-    employee_storage = Employees()
-    d = [create_driver(headless=True) for _ in range(num_threads-1)] + [create_driver(headless=False)]
-    # 2 logins for now
-    emails = [(email, password), (email2, password2)]
-    # login to each driver with a different login
-    [login_through_form(x, from_homepage=True, email=email, password=password) for (email, password), x in zip(emails, d)]
-    # create a thread pool
-    with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
-        # run the function on each profile link
-        executor.map(get_multiple_employee_data, d, employees, [employee_storage]*num_threads)
-    return employee_storage
-    # d = create_driver()
-    # login_through_form(d, from_homepage=True)
-    # employee_storage = Employees()
-    # for employee in employees[:5]:
-    #     extract_employee_info(d, employee, employee_storage)
-    # return employee_storage
-
+def get_employees_from_file(file:str, /, *, output:str) -> None:
+    '''
+    Scrape LinkedIn profiles from a file.
+    '''
+    # get the list of public profiles
+    logging.info('getting employee info...')
+    if not file.endswith('.txt'):
+        logging.error('Please specify a .txt file.')
+        sys.exit(1)
+    with open (file, 'r') as f:
+        employees = [x.strip() for x in f.readlines()]
+    company_employees = get_all_employee_data(employees)
+    # write all the info to a csv file
+    company_employees.save_as_csv(output)

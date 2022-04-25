@@ -1,7 +1,7 @@
 import re, time, logging
 from typing import Optional
 # default values
-from settings import total_employees, company_url
+from .settings import total_employees, company_url
 # undetected chromedriver so my account stops getting locked
 import undetected_chromedriver as uc
 # selenium imports
@@ -61,8 +61,8 @@ def extract_company_employees(driver: uc.Chrome, *, url:str=company_url, total_e
         profiles = driver.find_elements(By.XPATH, '//div[@class="scaffold-finite-scroll__content"]/ul/li')
         # check if the profiles are the same as the last time
         if profiles == public_profiles:
-            # if theyre the same, it's likely that there are no more profiles so we'll break out of the loop
             stalled += 1
+            # if theyre the same many times, it's likely that there are no more profiles so we'll break out of the loop
             if stalled > 4:
                 logging.info('Stalled on loading profiles, breaking out of loop')
                 break
@@ -73,6 +73,6 @@ def extract_company_employees(driver: uc.Chrome, *, url:str=company_url, total_e
     # with open('profiles.txt', 'w') as f:
     #     for profile in public_profiles[:total_employees]:
     #         f.write(f'{profile}\n')
-    print(f"{'='*10}{total_employees} profiles stored{'='*10}")
+    print(f"{'='*10}{len(public_profiles)} profiles stored{'='*10}")
     if return_profiles:
         return public_profiles

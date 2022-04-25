@@ -1,6 +1,6 @@
 import time, logging
 # default values
-from settings import email, password
+from .settings import emails, passwords
 # undetected chromedriver so my account stops getting locked
 import undetected_chromedriver as uc
 # selenium imports
@@ -35,7 +35,7 @@ def check_for_compliance(driver: uc.Chrome) -> bool:
     return False
 
 # Logs in from the home page (fastest method)
-def login_through_form(driver: uc.Chrome, *, email:str=email, password:str=password, from_homepage:bool=False) -> None:
+def login_through_form(driver: uc.Chrome, *, email:str=emails[0], password:str=passwords[0], from_homepage:bool=False) -> None:
     logging.info('Logging in...')
     # make sure you're at the right link
     if from_homepage: 
