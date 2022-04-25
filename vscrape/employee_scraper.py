@@ -54,10 +54,18 @@ def extract_employee_info(driver: uc.Chrome, profile_link:str, employees: Employ
     # extract profile info
     # get name
     first_name, last_name = box.find_element(By.TAG_NAME, 'h1').text.split(maxsplit=1)
+    # replace commas in last name
+    last_name = last_name.replace(',', ';')
     # get label
     label = box.find_element(By.CLASS_NAME, 'text-body-medium').text
+    # replace commas in label
+    label = label.replace(',', ';')
     # get location
     location = box.find_element(By.CLASS_NAME, 'pb2').text
+    # location sometimes has 'Contact Info' at the end of it and we wanna remove that
+    location = location.split('Contact info')[0]
+    # replace commas from location
+    location = location.replace(',', ';')
     # get profile picture
     # check that they don't have a ghost profile pic
     if box.find_elements(By.CLASS_NAME, 'ghost-person'):

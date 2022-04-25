@@ -2,10 +2,11 @@ README.md
 setup.py
 vscrape/__init__.py
 vscrape/__main__.py
-vscrape/arguments.py
 vscrape/company_scraper.py
 vscrape/data_storage.py
+vscrape/download_profile_pics.py
 vscrape/employee_scraper.py
+vscrape/gender_detection.py
 vscrape/helper_funcs.py
 vscrape/scraper.py
 vscrape/settings.py

@@ -1,51 +1,40 @@
-import cv2, os
+import os, time, sys, csv
+import concurrent.futures
+import pandas as pd
+import numpy as np
 
-genderProto='pretrained_models/gender_deploy.prototxt'
-# give full path to genderModel (openCV being buggy w/o this for sum reason)
-genderModel = os.path.abspath('pretrained_models/gender_net.caffemodel')
+def detect_gender(file: str, DeepFace) -> str:
+    '''
+    Detect gender of person in image using deepface
+    '''
+    res = DeepFace.analyze(file, actions = ['gender'], detector_backend='retinaface')
+    # path/to/file.jpg -> file.jpg
+    filename = os.path.split(file)[1]
+    # name_position.jpg -> name_position -> position
+    return res['gender'], filename.split('.')[0].split('_')[1]
+
+def detect_genders_from_dir(dir: str) -> dict[str]:
+    if not os.path.isdir(dir):
+        print(f'Confirm that {dir} exists')
+        sys.exit(1)
+    print(f'{"="*5}Running Image Detection for Face Analaysis...{"="*5}')
+    # images = [f'{dir}/{f}' for f in os.listdir(dir)]
+    # with concurrent.futures.ThreadPoolExecutor() as executor:
+    #     results = executor.map(detect_gender, images)
+    #     for gender, position in results:
+    #         genders[position] = gender
+    genders = dict()
+    from deepface import DeepFace # internal import to avoid lag
+    for path in os.listdir(dir):
+        gender, position = detect_gender(f'{dir}/{path}', DeepFace)
+        genders[int(position)] = gender
+    print(f'{"="*10}ASSIGNED {len(genders)} GENDERS{"="*10}')
+    return genders
 
 
-faceProto='pretrained_models/opencv_face_detector.pbtxt'
-faceModel='pretrained_models/opencv_face_detector_uint8.pb'
 
-MODEL_MEAN_VALUES=(78.4263377603, 87.7689143744, 114.895847746)
-
-genderList=['Male','Female']
-genderNet=cv2.dnn.readNet(genderModel,genderProto)
-faceNet=cv2.dnn.readNet(faceModel,faceProto)
-
-# generic code
-def detect_image_gender(file: str) -> str:
-    video = cv2.VideoCapture(file)
-    padding = 20
-    _, frame = video.read()
-    [face_box] = get_face_boxes(faceNet,frame)
-    # only one face box in linekdin profile pics
-    face = frame[max(0,face_box[1]-padding):
-                min(face_box[3]+padding,frame.shape[0]-1),max(0,face_box[0]-padding)
-                :min(face_box[2]+padding, frame.shape[1]-1)]
-
-    blob = cv2.dnn.blobFromImage(face, 1.0, (227, 227), MODEL_MEAN_VALUES, swapRB=False)
-    genderNet.setInput(blob)
-    genderPreds = genderNet.forward()
-    gender = genderList[genderPreds[0].argmax()]
-    print(f'Gender: {gender}')
-    return gender
-    
-def get_face_boxes(net, frame, conf_threshold:float=0.7) -> None:
-    frame_height, frame_width, *_ = frame.shape
-    # turn frame (image) into a blod to pass into the model
-    blob=cv2.dnn.blobFromImage(frame, 1.0, (400,400), [104, 117, 123], True, False)
-
-    # pass the blob into the model
-    net.setInput(blob)
-    detections=net.forward()
-
-    for i in range(detections.shape[2]):
-        confidence = detections[0,0,i,2]
-        if confidence > conf_threshold:
-            x1 = int(detections[0,0,i,3]* frame_width)
-            y1 = int(detections[0,0,i,4]* frame_height)
-            x2 = int(detections[0,0,i,5]* frame_width)
-            y2 = int(detections[0,0,i,6]* frame_height)
-            return [[x1, y1, x2, y2]]
+if __name__ == '__main__':
+    t1 = time.perf_counter()
+    detect_genders_from_dir('profile_pics')
+    t2 = time.perf_counter()
+    print(f'Total Runtime :: {t2-t1:.2f}')

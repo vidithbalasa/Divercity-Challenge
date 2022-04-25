@@ -1,7 +1,7 @@
 import re, time, logging
 from typing import Optional
 # default values
-from .settings import total_employees, company_url
+from .settings import total_employees as num_employee, company_url
 # undetected chromedriver so my account stops getting locked
 import undetected_chromedriver as uc
 # selenium imports
@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # Get a list of public profiles on the company page
-def extract_company_employees(driver: uc.Chrome, *, url:str=company_url, total_employees:int=total_employees, return_profiles:bool=False) -> Optional[list[str]]:
+def extract_company_employees(driver: uc.Chrome, *, url:str=company_url, total_employees:int=num_employee, return_profiles:bool=False) -> Optional[list[str]]:
     if not re.match(r'people/?$', url): 
         url += 'people/'
     driver.get(url)

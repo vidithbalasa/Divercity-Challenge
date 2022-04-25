@@ -20,3 +20,5 @@ total_employees = 100
 company_url = 'https://www.linkedin.com/company/hubspot/'
 
 num_threads = 4
+
+DEBUG = True

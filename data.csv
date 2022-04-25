@@ -1,50 +1,78 @@
-first_name,last_name,location,label,profile_pic
-Alexander,Ramirez,Los Angeles Metropolitan Area Contact info,Recruiter at HubSpot,https://media-exp1.licdn.com/dms/image/D5635AQFGC8uNYraCWQ/profile-framedphoto-shrink_400_400/0/1646086840945?e=2147483647&v=beta&t=kzz6ZCP6AcAf2q0Xtiq_D1OwKX5tep0cc82YooOaMqE
-Vidya,Drego,San Francisco, California, United States Contact info,VP of Product and Solutions Marketing at HubSpot,
-Yamini,Rangan,San Francisco Bay Area Contact info,Chief Executive Officer at HubSpot,https://media-exp1.licdn.com/dms/image/C4E03AQHqlX2E-K9csw/profile-displayphoto-shrink_400_400/0/1579236242485?e=1656547200&v=beta&t=uTnq0SL7o2_o7uPW9BXEte9zgyuUaMEn96lr3dI6kZ4
-Mia,Bryan,Washington, District of Columbia, United States Contact info,Recruiting @ HubSpot,
-Kenny,Jean,Boston, Massachusetts, United States Contact info,Technical Recruiter at HubSpot,
-Leilani,Lindfield,Mountain View, California, United States Contact info,Executive Researcher at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQEdxU8CyDdPOg/profile-displayphoto-shrink_400_400/0/1592002046317?e=1656547200&v=beta&t=jaE9syK3qpLvM_6Jtmd8AlaDV1b9s9joDsOpilYYkUs
-Mercedes,H.,Greater Boston Contact info,Technical Recruiter at HubSpot,https://media-exp1.licdn.com/dms/image/C4E03AQGz103_DtWKxw/profile-displayphoto-shrink_400_400/0/1632236131198?e=1656547200&v=beta&t=PITK6oMspNSldYHymmG4uW53b0wIUUe7uVYQSRBFUC4
-Maren,Mitchell,Los Angeles, California, United States Contact info,Recruiting for People Ops at HubSpot,https://media-exp1.licdn.com/dms/image/C4D03AQEEfDHLQrmvcQ/profile-displayphoto-shrink_400_400/0/1635543766900?e=1656547200&v=beta&t=1XIrUK3H0fnXBNs-QMSi0dORKUNKIyBN3lMkmCn4uUY
-Casey,Bennington, CPA, CISA,San Diego, California, United States Contact info,Senior Software Engineer at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQEz9m6vScdgrw/profile-displayphoto-shrink_400_400/0/1517743872551?e=1656547200&v=beta&t=rArfuNfZym5u6aqRl-17ku-B_Auk6RYfp606SoECGEE
-Valeria,Montrucchio, PhD,San Francisco Bay Area Contact info,Design Manager at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQElCN27DunV5A/profile-displayphoto-shrink_400_400/0/1541820544097?e=1656547200&v=beta&t=viQi0QdyNS50qjv3dn7KGytutdL_PZCDtJUm-vwGeTY
-Shyla,Storm, MLS,Greater Boston Contact info,HR @ HubSpot,
-Olivia,Hollows,Wakefield, Rhode Island, United States Contact info,Recruiter at HubSpot - We're hiring!,https://media-exp1.licdn.com/dms/image/C4D03AQHion5GyUHXKA/profile-displayphoto-shrink_400_400/0/1611249209136?e=1656547200&v=beta&t=goO63Y2mrhXwkSPFb-OPIFQStunQmVgGpr77EDbbVRg
-Annemarie,DeSmet,Greater Boston Contact info,Recruiter for Product Management at HubSpot | Looking for folks with HEART,https://media-exp1.licdn.com/dms/image/C5603AQGZgcd6a88yCw/profile-displayphoto-shrink_400_400/0/1643291866542?e=1656547200&v=beta&t=TZo7xU7SEeInxnir4xBFkXxGVWAy5UWsUb6wCkC22ic
-Katie,Burke,Boston, Massachusetts, United States Contact info,Chief People Officer,
-Nichole,Williams,Montgomery, Alabama, United States Contact info,Executive Recruiting @ HubSpot | Talent Acquisition | Researcher🕵🏾‍♀️ | Connecting People with Opportunities,https://media-exp1.licdn.com/dms/image/C4D03AQHipSAEAVgS6Q/profile-displayphoto-shrink_400_400/0/1644275639611?e=1656547200&v=beta&t=7Tfyi5pAQBLtBaCfR6AgQ_uInSeQygsNKIls5RtyJn4
-Vladimir,Gorshkov,San Francisco Bay Area Contact info,Enterprise Account Executive at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQFZZuxD7ZsxcA/profile-displayphoto-shrink_400_400/0/1609783366955?e=1656547200&v=beta&t=d-toKBgo8VB9r8FwYqsmrhKFEJL1keX22CkMpSwK8j8
-Emily,Magnuson,San Francisco Bay Area Contact info,Strategy & Operations at HubSpot,
-Sabrina,Singh,Columbus, Ohio Metropolitan Area Contact info,Executive Recruiter @ HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQHd9urpnURuhA/profile-displayphoto-shrink_400_400/0/1517703783326?e=1656547200&v=beta&t=Xun231A0Ua8k2dKj34GIHCCL8oC2JQgAIOIlLt3GPT8
-Andrew,Edgar,Greater Chicago Area Contact info,Sourcing Manager at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQFYv-hVpm7dMw/profile-displayphoto-shrink_400_400/0/1638707539090?e=1656547200&v=beta&t=TM_CbRu82DUByYH_QeUVuKA1iVI9Vq0GSj94312_zq8
-Prashanth,Srinivasan,San Francisco Bay Area Contact info,Senior Director, Corporate Strategy at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQEdTM-EqJVR3A/profile-displayphoto-shrink_400_400/0/1591225920386?e=1656547200&v=beta&t=nMfABisvpRwh05ypudMcfcN3iUDu_dKuImWqEAUK6ak
-Erica,Chamberlain, MBA,Reno, Nevada, United States Contact info,POPs Recruiter at HubSpot - We're hiring! | MBA Grad | Human Resources Enthusiast,https://media-exp1.licdn.com/dms/image/C5603AQHWCIuJzywfeg/profile-displayphoto-shrink_400_400/0/1603146365125?e=1656547200&v=beta&t=wX84fZQTNrLabn9RVttkohT738HFygV0wJFfZt6OaJc
-Nick,Caldwell,San Francisco Bay Area Contact info,GM of Redbird @ Twitter | HubSpot Board | Angel,https://media-exp1.licdn.com/dms/image/C5603AQEt9Rfts20gLA/profile-displayphoto-shrink_400_400/0/1593916164904?e=1656547200&v=beta&t=c6eqTJehIspTedsR6EYnIp-RKEffBd_lsyZXObI9zb4
-Joseph,Krammer,San Francisco Bay Area Contact info,Enterprise Account Executive at HubSpot,https://media-exp1.licdn.com/dms/image/C4E03AQFAZDInigOY1Q/profile-displayphoto-shrink_400_400/0/1536198461181?e=1656547200&v=beta&t=chYm3ju51fMNLAP8KMz13X8r4o590tSbkvmGyOXUrBs
-Brigette,Lavelle,Greater Phoenix Area Contact info,Recruiting Leader,https://media-exp1.licdn.com/dms/image/C5603AQGqGUr3OPdc2g/profile-displayphoto-shrink_400_400/0/1603833583651?e=1656547200&v=beta&t=Cjyak5EhlKopMkDZjOOjpAvNRn8kSwlBg6Sw1SWfQzI
-Annie,O'Gorman,Boston, Massachusetts, United States Contact info,Executive Recruitment at HubSpot,
-Alyssa,Sharif,Cleveland, Ohio, United States Contact info,Hiring Infrastructure Engineers!,https://media-exp1.licdn.com/dms/image/D4E35AQHVp0EXVarWhA/profile-framedphoto-shrink_400_400/0/1649186180548?e=2147483647&v=beta&t=Txq9tLTUMLcpqDiFc5W6vIU2mCuFeT66Mkm4jfj_r4M
-Rachel,Fagan,United States Contact info,Recruiting Operations at HubSpot,
-Joni,Roberson Factor (she-her),Natick, Massachusetts, United States Contact info,People Operations: Recruitment at HubSpot,
-Trevor,Price,Boston, Massachusetts, United States Contact info,Associate Program Manager, Recruiting Operations at HubSpot,https://media-exp1.licdn.com/dms/image/C4E03AQHBn_sU_zJLsg/profile-displayphoto-shrink_400_400/0/1633996038357?e=1656547200&v=beta&t=8lSvVHwP4-9fFn4Xbx_sqdbwnDPfwM5kml72fGWkzPs
-Sobhan,Varada,Denver Metropolitan Area Contact info,Senior Software Engineer II at HubSpot,
-Katrina,Powell,United States Contact info,GTM Recruiting Director,https://media-exp1.licdn.com/dms/image/C4E03AQFbG9Hsx6tl1w/profile-displayphoto-shrink_400_400/0/1647369966243?e=1656547200&v=beta&t=JZ_7txPPyfcPbz2Omza0Z1V2o5-3pWUpZtZmU_YpbUU
-Timothy,Dixon-Traylor,Atlanta, Georgia, United States Contact info,Recruiter and Certified DEI Advocate,https://media-exp1.licdn.com/dms/image/C5603AQG7OcGGfvzT3Q/profile-displayphoto-shrink_400_400/0/1550682526120?e=1656547200&v=beta&t=kNSqXx-p02QWVdtRoLElDXAP7Ox7A_vlxpP9NZ7KWFU
-Rishi,Sood,San Francisco, California, United States Contact info,Sr. Director - Global Programs and North America Sales Strategy at HubSpot,https://media-exp1.licdn.com/dms/image/C4D03AQH5X6lhXOGixQ/profile-displayphoto-shrink_400_400/0/1515622770124?e=1656547200&v=beta&t=VMxtGAMVTye0HZKmzdiAQdXQTHzvQCiE-XwMxOTeaW4
-Jason,Webber,Cambridge, Massachusetts, United States Contact info,Senior Director of Information Technology at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQFaPGR2dw_qNQ/profile-displayphoto-shrink_400_400/0/1516256565052?e=1656547200&v=beta&t=whXs6CjklekrlXH6hiWSpbY-Pb8eEFYIp_c_Ig0SgZ4
-Brian,Barbosa,Greater Boston Contact info,Director Of Engineering at HubSpot,
-Tacyana,Gomes,San Francisco, California, United States Contact info,Customer Support Specialist at HubSpot - Helping Millions of organizations to grow better!,https://media-exp1.licdn.com/dms/image/C5603AQEhLRcTyWr1WA/profile-displayphoto-shrink_400_400/0/1637020248996?e=1656547200&v=beta&t=rvDMcvhOcsQ6kwyzB9KMFTa5Mdy-war3i4nBhzGgy4w
-Viennie,Chanthachack (he/him),Providence, Rhode Island, United States Contact info,Team Lead, Global Emerging Talent Recruiting @ HubSpot | @vinfromrecruiting on TikTok & Instagram,https://media-exp1.licdn.com/dms/image/C4D03AQErX6jdpS6X5Q/profile-displayphoto-shrink_400_400/0/1648645866587?e=1656547200&v=beta&t=bcMLwndauPjrtTxOsc3QNuyuDnP4g84cpX8G9snvHSo
-Cimran,Virdi,Greater Boston Contact info,Senior Engineering Manager at HubSpot,
-Mark,Millstein,Boston, Massachusetts, United States Contact info,Senior Software Engineer 2 - Conversations,https://media-exp1.licdn.com/dms/image/C4E03AQFAd1EsN_Ux6Q/profile-displayphoto-shrink_400_400/0/1516847137869?e=1656547200&v=beta&t=Rxy2vdXKKl6SLh6WxcfnRqUsPqTAs1iYuAhECh2onZ4
-Vickie,(Van) Vu, CPA,San Francisco Bay Area Contact info,Accounting @ HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQGQiCqqVfqXcA/profile-displayphoto-shrink_400_400/0/1634884406601?e=1656547200&v=beta&t=BwBrSRH2eqFXDAKjgu0XJNVeGLFcVmDh_xHWmxiBWeg
-Orion,Culbertson,San Francisco, California, United States Contact info,Software Engineer,https://media-exp1.licdn.com/dms/image/C5603AQFQsrR_Ph093g/profile-displayphoto-shrink_400_400/0/1637003158774?e=1656547200&v=beta&t=EwveVdfo_pohIrNjSHhE1nCKQ10229Jo-XN601Na33k
-Haley,San Giacomo,San Francisco, California, United States Contact info,Senior Analyst, Sales Strategy at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQEAuveCTKVvkw/profile-displayphoto-shrink_400_400/0/1517462096192?e=1656547200&v=beta&t=9KyFwDjVbz93sr1WK9n9fJBuCOvAnHi_YapohYTD7Ag
-Lotem,Hayun,San Francisco, California, United States Contact info,Senior Marketing Manager at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQHqcBjUuFQqeg/profile-displayphoto-shrink_400_400/0/1547676822435?e=1656547200&v=beta&t=p3V3RbYB4bw6MLgiOTOOi74MzQQvMQJXTMS2Aq_3uco
-Mike,La Capria,Santa Cruz, California, United States Contact info,Partner Specialist at HubSpot | Helping agencies, service providers, and other sellers grow their business and deliver value to their clients by partnering with HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQGVvHeU-S_oOg/profile-displayphoto-shrink_400_400/0/1636237668649?e=1656547200&v=beta&t=iA88oNISJ7W9EIJ769Q7zZJSS-R_IOqLbEaJHJplmBQ
-Tigran,Tigranyan,Los Angeles Metropolitan Area Contact info,Account Executive at HubSpot,https://media-exp1.licdn.com/dms/image/C5603AQHJ1iXFM5hN1g/profile-displayphoto-shrink_400_400/0/1565115276256?e=1656547200&v=beta&t=aogySk-9Lv3g9MwTqXOmJ8pJmlkwszzyFqhX1wkrNgs
-Loe,Lee,Oakland, California, United States Contact info,Head of UX, Growth @ HubSpot,https://media-exp1.licdn.com/dms/image/C4E03AQE1mac2ooOsYQ/profile-displayphoto-shrink_400_400/0/1638762528410?e=1656547200&v=beta&t=JtEt7WZsVls5CBtNvXMjhGeYxnaSt5qytgOOGZFnIcs
-Sarah,Boddy-Snee,Exeter, New Hampshire, United States Contact info,University Tech Recruiting for Co-Ops and Interns- We're Hiring!,https://media-exp1.licdn.com/dms/image/C4E03AQFKeMrDyg0hlQ/profile-displayphoto-shrink_400_400/0/1632245352915?e=1656547200&v=beta&t=8p-svC_Ge9oWcS2Q1XZrxtxTn_u30pd9jvnQAJh0OlA
-Janki,S.,Miami, Florida, United States Contact info,Talent Sourcer at HubSpot -- We're hiring!,https://media-exp1.licdn.com/dms/image/D4D35AQEGkYb2VkcHRA/profile-framedphoto-shrink_400_400/0/1629212807562?e=2147483647&v=beta&t=HvNmhzdThNUDOuJpjF772D22oAyuNRTCSn3xgQnbbsE
-Naj,N.,Boston, Massachusetts, United States Contact info,Recruiting Coordinator,
+first_name,last_name,location,label,profile_pic,gender
+Vidya,Drego,San Francisco; California; United States,VP of Product and Solutions Marketing at HubSpot,True,
+Alexander,Ramirez,Los Angeles Metropolitan Area,Recruiter at HubSpot,True,
+Yamini,Rangan,San Francisco Bay Area,Chief Executive Officer at HubSpot,True,
+Shyla,Storm; MLS,Greater Boston,HR @ HubSpot,True,Man
+Leilani,Lindfield,Mountain View; California; United States,Executive Researcher at HubSpot,True,Woman
+Austin,Barnard,Seattle; Washington; United States,Account Executive @ Hubspot,True,
+Emily,Magnuson,San Francisco Bay Area,Strategy & Operations at HubSpot,True,Woman
+Kenny,Jean,Boston; Massachusetts; United States,Technical Recruiter at HubSpot,True,Man
+Casey,Bennington; CPA; CISA,San Diego; California; United States,Senior Software Engineer at HubSpot,True,
+Olivia,Hollows,Wakefield; Rhode Island; United States,Recruiter at HubSpot - We're hiring!,True,
+Mercedes,H.,Greater Boston,Technical Recruiter at HubSpot,True,Man
+Katie,Burke,Boston; Massachusetts; United States,Chief People Officer,True,Woman
+Nichole,Williams,Montgomery; Alabama; United States,Executive Recruiting @ HubSpot | Talent Acquisition | Researcher🕵🏾‍♀️ | Connecting People with Opportunities,True,Man
+Vladimir,Gorshkov,San Francisco Bay Area,Enterprise Account Executive at HubSpot,True,
+Nick,Caldwell,San Francisco Bay Area,GM of Redbird @ Twitter | HubSpot Board | Angel,True,Man
+Andrew,Edgar,Greater Chicago Area,Sourcing Manager at HubSpot,True,Man
+Rachel,Fagan,United States,Recruiting Operations at HubSpot,True,Man
+Brigette,Lavelle,Greater Phoenix Area,Recruiting Leader,True,Man
+Erica,Chamberlain; MBA,Reno; Nevada; United States,POPs Recruiter at HubSpot - We're hiring! | MBA Grad | Human Resources Enthusiast,True,
+Rishi,Sood,San Francisco; California; United States,Sr. Director - Global Programs and North America Sales Strategy at HubSpot,True,Woman
+Alyssa,Sharif,Cleveland; Ohio; United States,Hiring Infrastructure Engineers!,True,Woman
+Katrina,Powell,United States,GTM Recruiting Director,True,Man
+Tacyana,Gomes,San Francisco; California; United States,Customer Support Specialist at HubSpot - Helping Millions of organizations to grow better!,True,Woman
+Timothy,Dixon-Traylor,Atlanta; Georgia; United States,Recruiter and Certified DEI Advocate,True,Woman
+Joseph,Krammer,San Francisco Bay Area,Enterprise Account Executive at HubSpot,True,Man
+Vickie,(Van) Vu; CPA,San Francisco Bay Area,Accounting @ HubSpot,True,Man
+Sobhan,Varada,Denver Metropolitan Area,Senior Software Engineer II at HubSpot,True,Man
+Viennie,Chanthachack (he/him),Providence; Rhode Island; United States,Team Lead; Global Emerging Talent Recruiting @ HubSpot | @vinfromrecruiting on TikTok & Instagram,True,Man
+Brian,Barbosa,Greater Boston,Director Of Engineering at HubSpot,True,
+Loe,Lee,Oakland; California; United States,Head of UX; Growth @ HubSpot,True,Man
+Orion,Culbertson,San Francisco; California; United States,Software Engineer,True,
+Haley,San Giacomo,San Francisco; California; United States,Senior Analyst; Sales Strategy at HubSpot,True,Man
+Sarah,Boddy-Snee,Exeter; New Hampshire; United States,University Tech Recruiting for Co-Ops and Interns- We're Hiring!,True,Man
+Mike,La Capria,Santa Cruz; California; United States,Partner Specialist at HubSpot | Helping agencies; service providers; and other sellers grow their business and deliver value to their clients by partnering with HubSpot,True,Woman
+Xinyang,(Rex) Yang,San Francisco Bay Area,Product Analyst @ HubSpot,True,Woman
+Faraaz,Z Zaman,San Diego; California; United States,Manager; Onboarding Team at HubSpot,True,Man
+Tigran,Tigranyan,Los Angeles Metropolitan Area,Account Executive at HubSpot,True,Man
+Janki,S.,Miami; Florida; United States,Talent Sourcer at HubSpot -- We're hiring!,True,Man
+Libby,Maurer,Boston; Massachusetts; United States,VP User Experience at HubSpot,True,Man
+Lotem,Hayun,San Francisco; California; United States,Senior Marketing Manager at HubSpot,True,Woman
+Tyler,Rhodes,North Reading; Massachusetts; United States,Director of Sales at HubSpot,True,Woman
+Jonathan,Corbin,Greater Boston,Global Vice President of Customer Success & Strategy at HubSpot,True,Woman
+Austin,Smith,United States,Helping Businesses Grow Better with HubSpot,True,Man
+Naj,N.,Boston; Massachusetts; United States,Recruiting Coordinator,True,
+Esteban,Payret,Miami-Fort Lauderdale Area,Technical Lead at HubSpot,True,Man
+Vishal,Kendre,Greater Tampa Bay Area,Senior Software Engineer II - Backend at Hubspot,True,
+Bailey,Galbreath,Houston; Texas; United States,Business Development Representative at Hubspot,True,Man
+Emily,Lin,United States,Corporate Development & Partnerships @ HubSpot,True,Man
+Katie,Fung,Greater Houston,Tech Recruiting (🎯 UX) @ HubSpot | We're Hiring!,True,
+Mohsin,Ali,Pleasanton; California; United States,VP; Corporate Development at HubSpot,True,Woman
+Michelle,Benfer,Wellesley; Massachusetts; United States,SVP of Sales at HubSpot,True,Woman
+Marik,Marshak,Greater Boston,Senior Director Of Engineering ; Head of Engineering at Microsoft | ex-Amazon; AWS,True,Man
+David,Hunt,Cambridge; Massachusetts; United States,VP of Global Customer Support at HubSpot,True,
+Jon,Miller,Dallas-Fort Worth Metroplex,Senior Software Engineer @ HubSpot,True,Man
+Laura,Simone,Greater Seattle Area,Financial Analyst at HubSpot,True,
+Kelsey,Gernert Aina,San Francisco Bay Area,Helping millions of startups grow better by building marketing sales and service processes that accelerate sales growth.,True,Man
+Jamie,Waters,Suffolk County; Massachusetts; United States,Senior Software Engineer at Hubspot,True,Woman
+Ty,Saathoff,United States,Enterprise Account Executive at HubSpot,True,Woman
+Juichang,Lu,Atlanta Metropolitan Area,Senior Software Engineer at Hubspot,True,Man
+Brann,Gallagher,Boston; Massachusetts; United States,Assistant Counsel at HubSpot,True,Man
+Alicia,Collins,Cambridge; Massachusetts; United States,Brand Marketing @ HubSpot,True,Man
+Zeeshan,Qamruddin,United States,Director of Product; Fintech @ HubSpot,True,
+Alexander,Mufson,Greater Boston,Principal Onboarding Specialist at HubSpot,True,Man
+Sarah,Laftchiev,Greater Boston,Senior Software Engineer at HubSpot,True,Man
+Dylan,Shea,Southborough; Massachusetts; United States,Principal Business Development Representative at HubSpot,True,Man
+Rachael,B. Card; M.Ed.,Miami; Florida; United States,Learning Experience Designer @ HubSpot,True,Woman
+NiGeanya,Hawkins,Washington; District of Columbia; United States,Software Engineer @ HubSpot | US Army Veteran,True,Man
+Kim,Ruberg; MBA,Newport; Kentucky; United States,Senior Recruiter at Hubspot- We're Hiring!,True,Man
+Reginald,Beaudoin,New York; New York; United States,Business Development Representative at HubSpot,True,Man
+Sarina,Kowaguchi,Greater Boston,Account Executive at HubSpot,True,
+Kate,Sullivan,San Francisco Bay Area,Global Head of Creative Operations @ HubSpot | Podcast Producer | Public Speaker,True,Man
+Brad,Greene,Boston; Massachusetts; United States,VP Commerce and Payments at HubSpot,True,
+Angie,D'Alli,Los Angeles; California; United States,Emerging Talent Tech Recruiting @HubSpot - We're Hiring!,True,Woman
+Michelle,Domalaon,United States,Manager in customer success dedicated to technological advancements & the development of future leaders into an equitable workforce ✨,True,Man
+Lindsay,Miller,Orange County; California; United States,Team Lead; Marketing Recruiting at HubSpot,True,Woman
+,,,,,Woman
+,,,,,Woman

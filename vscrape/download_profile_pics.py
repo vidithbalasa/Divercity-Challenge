@@ -5,6 +5,9 @@ def download_profile_pics(file: str, path: str) -> None:
     '''
     Goes through given file an downloads all of the images. Then
     replaces profile_pic section with the image name.
+    ---
+    @param file: path to the file with the profile pic links (.csv)
+    @param path: path to the directory where the images will be saved
     '''
     if not file.endswith('.csv'):
         print('Please specify a .csv file.')
