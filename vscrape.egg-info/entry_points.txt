@@ -1,3 +1,0 @@
-[console_scripts]
-vscrape = vscrape.__main__:main
-
